@@ -80,20 +80,6 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-/* Glow quente de fundo */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(185,112,89,0.18) 0%, rgba(227,189,98,0.06) 45%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
 .hero > * { position: relative; z-index: 1; }
 
 .foto-wrapper {
@@ -167,18 +153,11 @@ a { color: inherit; text-decoration: none; }
 
 .hero-phrase span {
   display: inline-block;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.65s ease;
+  opacity: 0;
+  transition: opacity 1.2s ease;
 }
-
-.hero-phrase span.visible {
-  clip-path: inset(0 0% 0 0);
-}
-
-.hero-phrase span.exiting {
-  clip-path: inset(0 0 0 100%);
-  transition: clip-path 0.35s ease;
-}
+.hero-phrase span.visible { opacity: 1; }
+.hero-phrase span.exiting { opacity: 0; transition: opacity 0.6s ease; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
@@ -280,77 +259,35 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.55;
 }
 
-.card-tag {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+.card { cursor: pointer; }
+
+.card::after {
+  content: "→";
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-size: 14px;
   color: var(--dourado);
-  font-size: 0.95rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s, transform 0.25s;
 }
 
-.btn-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  background: var(--dourado);
-  color: #1A1A1A;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 800;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-  padding: 13px 22px;
-  border-radius: 8px;
-  margin-top: 4px;
-  transition: opacity 0.2s, transform 0.2s;
+.card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.btn-gold:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+/* Card 1 (Guardião) — fundo claro */
+.card:not(.destaque) {
+  background: var(--marfim);
+  border-color: rgba(0,0,0,0.06);
 }
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  background: transparent;
-  color: var(--marfim);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-  padding: 13px 22px;
-  border-radius: 8px;
-  border: 1px solid rgba(245,241,232,0.2);
-  margin-top: 4px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.btn-ghost:hover {
-  border-color: rgba(245,241,232,0.5);
-  transform: translateY(-1px);
-}
-
-/* PILLS */
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 2px 0;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(245,241,232,0.07);
-  border: 1px solid rgba(245,241,232,0.1);
-  border-radius: 100px;
-  padding: 5px 12px;
-  font-size: 0.78rem;
-  color: rgba(245,241,232,0.7);
-}
+.card:not(.destaque) .card-label { color: var(--argila); }
+.card:not(.destaque) .card-title { color: var(--preto); }
+.card:not(.destaque) .card-desc { color: rgba(26,26,26,0.6); }
+.card:not(.destaque)::before { background: linear-gradient(90deg, var(--argila), var(--dourado)); }
+.card:not(.destaque):hover { border-color: rgba(185,112,89,0.3); }
 
 /* FOOTER */
 footer {
@@ -416,6 +353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HERO -->
 <section class="hero">
+  <canvas id="constellation" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
   <div class="foto-wrapper">
     <img src="isabel-perfil.jpeg" alt="Isabel Salvadori">
   </div>
@@ -438,32 +376,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="links">
 
   <!-- Card 1: Guardião -->
-  <article class="card" id="card1">
+  <a class="card" href="https://isabelsalvadori.com.br/lp-guardiaodarotina" target="_blank" rel="noopener" id="card1">
     <span class="card-label">ferramenta</span>
     <h2 class="card-title">Guardião da Rotina</h2>
     <p class="card-desc">Painel visual de rotina criado pra funcionar de verdade com o seu filho.</p>
-    <span class="card-tag">R$29,90 · acesso imediato e ilimitado</span>
-    <a class="btn-gold" href="https://isabelsalvadori.com.br/lp-guardiaodarotina" target="_blank" rel="noopener">
-      Quero o Guardião
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </article>
+  </a>
 
   <!-- Card 2: Mentoria (destaque) -->
-  <article class="card destaque" id="card2">
+  <a class="card destaque" href="https://wa.me/5547992842618" target="_blank" rel="noopener" id="card2">
     <span class="card-label">mentoria individual</span>
-    <h2 class="card-title">Para quando você precisa de alguém que entende de verdade.</h2>
-    <p class="card-desc">Sessões individuais, com vagas limitadas, para mães que querem mais do que dicas genéricas.</p>
-    <div class="pills">
-      <span class="pill">Sessões individuais</span>
-      <span class="pill">Vagas limitadas</span>
-      <span class="pill">Foco no seu filho</span>
-    </div>
-    <a class="btn-ghost" href="https://wa.me/5547992842618" target="_blank" rel="noopener">
-      Quero saber mais
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </article>
+    <h2 class="card-title">Mentoria Individual</h2>
+    <p class="card-desc">Para quando você precisa de alguém que entende de verdade e te diz o que fazer.</p>
+  </a>
 
 </main>
 
@@ -516,18 +440,81 @@ function nextPhrase() {
     phraseEl.appendChild(s);
     void s.offsetWidth;
     s.classList.add('visible');
-  }, 380);
+  }, 650);
 }
 
 showFirst();
 if (!reduceMotion) {
-  setInterval(nextPhrase, 4200);
+  setInterval(nextPhrase, 5000);
 } else {
   setInterval(function() {
     current = (current + 1) % phrases.length;
     phraseEl.innerHTML = '<span class="visible">' + phrases[current] + '</span>';
-  }, 4200);
+  }, 5000);
 }
+
+// Constelação no fundo do hero
+(function() {
+  var canvas = document.getElementById('constellation');
+  if (!canvas || reduceMotion) return;
+  var ctx = canvas.getContext('2d');
+  var W, H, pts = [];
+  var N = 55, DIST = 120;
+
+  function resize() {
+    var hero = canvas.parentElement;
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  function init() {
+    pts = [];
+    for (var i = 0; i < N; i++) {
+      pts.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        r: Math.random() * 0.8 + 0.4
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      p.x = Math.max(0, Math.min(W, p.x));
+      p.y = Math.max(0, Math.min(H, p.y));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,241,232,0.55)';
+      ctx.fill();
+      for (var j = i + 1; j < pts.length; j++) {
+        var q = pts[j];
+        var dx = p.x - q.x, dy = p.y - q.y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < DIST) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(245,241,232,' + (0.06 * (1 - dist/DIST)) + ')';
+          ctx.lineWidth = 0.4;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  init();
+  draw();
+  window.addEventListener('resize', function() { resize(); init(); });
+})();
 
 // Cards fade in
 var cards = document.querySelectorAll('.card');
