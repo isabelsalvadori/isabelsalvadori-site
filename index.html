@@ -3,35 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isabel Salvadori</title>
-<meta name="description" content="Para famílias com filhos neurodivergentes que querem solução.">
+<title>MIIRTUS</title>
+<meta name="description" content="Ecossistema para famílias com filhos neurodivergentes.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KF3WDJ2D');</script>
+<!-- GTM aqui -->
 
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1706814706921512');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1706814706921512&ev=PageView&noscript=1"/></noscript>
+<!-- Meta Pixel aqui -->
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +29,7 @@ src="https://www.facebook.com/tr?id=1706814706921512&ev=PageView&noscript=1"/></
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--preto);
+  background-color: #1a3530;
   color: var(--marfim);
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
@@ -85,7 +66,7 @@ a { color: inherit; text-decoration: none; }
 .foto-wrapper {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: 12px;
   overflow: hidden;
   border: 2.5px solid rgba(227,189,98,0.4);
   box-shadow: 0 0 0 6px rgba(227,189,98,0.07), 0 8px 32px rgba(0,0,0,0.5);
@@ -348,21 +329,17 @@ footer::before {
 </head>
 <body>
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF3WDJ2D"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
 <!-- HERO -->
 <section class="hero">
   <canvas id="constellation" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
   <div class="foto-wrapper">
-    <img src="isabel-perfil.jpeg" alt="Isabel Salvadori">
+    <img src="monograma.png" alt="MIIRTUS">
   </div>
 
-  <p class="hero-eyebrow">Fundadora da MIIRTUS · Especialista em ABA</p>
+  <p class="hero-eyebrow">Ecossistema para famílias com filhos neurodivergentes</p>
 
   <h1 class="hero-name">
-    <span>mãe, como você</span>
-    Isabel Salvadori
+    MIIRTUS
   </h1>
 
   <p class="hero-phrase" id="rotatingPhrase" aria-live="polite">
@@ -376,7 +353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="links">
 
   <!-- Card 1: Guardião -->
-  <a class="card" href="https://isabelsalvadori.com.br/lp-guardiaodarotina" target="_blank" rel="noopener" id="card1">
+  <a class="card" href="https://guardiaodarotina.netlify.app" target="_blank" rel="noopener" id="card1">
     <span class="card-label">ferramenta</span>
     <h2 class="card-title">Guardião da Rotina</h2>
     <p class="card-desc">Painel visual de rotina criado pra funcionar de verdade com o seu filho.</p>
@@ -385,7 +362,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Card 2: Mentoria (destaque) -->
   <a class="card destaque" href="https://wa.me/5547992842618" target="_blank" rel="noopener" id="card2">
     <span class="card-label">mentoria individual</span>
-    <h2 class="card-title">Mentoria Individual</h2>
+    <h2 class="card-title">Mentoria com Isabel</h2>
     <p class="card-desc">Para quando você precisa de alguém que entende de verdade e te diz o que fazer.</p>
   </a>
 
@@ -393,7 +370,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a class="card" href="https://chat.whatsapp.com/FuqN9d1lx2D8pmhAdtRELJ?s=cl&p=i&mlu=4&ilr=4" target="_blank" rel="noopener" id="card3">
     <span class="card-label">comunidade</span>
     <h2 class="card-title">Grupo de Mães Atípicas</h2>
-    <p class="card-desc">Um espaço gratuito para troca de informações, ser acolhida e não passar por isso sozinha.</p>
+    <p class="card-desc">Um espaço gratuito para troca, acolhimento e informação de qualidade.</p>
   </a>
 
 </main>
@@ -409,12 +386,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </svg>
       @isabelsalvadori
     </a>
-    <a class="footer-link" href="mailto:suporte@isabelsalvadori.com">
+    <a class="footer-link" href="mailto:suporte@miirtus.com.br">
       <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
         <polyline points="22 6 12 13 2 6"/>
       </svg>
-      suporte@isabelsalvadori.com
+      suporte@miirtus.com.br
     </a>
   </div>
 </footer>
@@ -424,9 +401,9 @@ var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 // Frases rotativas
 var phrases = [
-  "Entender muda tudo. E você merece entender de verdade.",
-  "Antes de qualquer resposta, existe algo que precisa ser compreendido.",
-  "Para quem cuida e quer tomar decisões com mais consciência."
+  "Entender para cuidar melhor.",
+  "Conhecimento, ferramentas e suporte para quem cuida.",
+  "Para famílias que querem solução, não apenas acolhimento."
 ];
 var phraseEl = document.getElementById('rotatingPhrase');
 var current = 0;
